@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ro">
+	
+<head>
+    <meta charset="utf-8">
+    <title> Proiect Button pentru WellCode </title>
+    <meta name = "copyright" content = "Copyright 2022. Crăciun Victor">
+	<style>
+		h1 {text-align: center;}
+		p {text-align: center;}
+		div {text-align: center;}
+	</style>
+</head>
+	
+<body>
+	<div class = "container" style = "text-align: right;">
+	  Joc Butoane by Crăciun Victor.
+	</div>
+	<div class = "card" style = "width: center;">
+		<div class = "card-body align-items-center d-flex justify-content-center">
+		  <img src = "images\button.png" class = "card-img-top" alt = "Butoane norocoase" style = "width:100px;height:50px;">
+		  <div class = "card-body">
+				<div class = "card-body align-items-center d-flex justify-content-center">
+				<h1 style = "background-color:Tomato;">< JOC ></h1>
+				<h1 style = "background-color:Yellow;">Ghicește</h1>
+				<h1 style = "background-color:DodgerBlue;">BUTONUL</h1>
+				<p class = "card-text"></p>
+				<a href = "#" class="btn btn-primary" onclick = "btnonclick();"> Doresc sa JOC </a>
+			 	</div>
+		  </div>
+		</div>
+	</div>
+	<div id = "divCheckbox" style = "display:none">
+		<div class = "form-check">
+			<input class = "form-check-input" type = "checkbox" value = "" id = "defaultCheck1" onclick = "formContrl()">
+			<label class="form-check-label" for = "defaultCheck1">
+				Doresc să ghicesc mai multe butoane!
+			</label>
+		</div>
+		<div class = "input-group input-group-sm mb-3">
+			<input id = "form-control1" class = "form-control" type = "text" placeholder = "Bifează mai sus..." readonly>
+			<button type = "button" class = "btn btn-primary btn-sm" onClick = "startGame();">Start</button>
+		</div>
+	</div>
+	<div id = "displayButtons1">
+	</div>
+</body>
+	
+<script>
+	var totalButtons = 3, k = Math.floor(Math.random() * totalButtons - 1);
+		function btnonclick() {
+			const targetDiv = document.getElementById('divCheckbox');
+			if (targetDiv.style.display === "none") {
+				targetDiv.style.display = "block";
+			} else {
+				alert("Apasă butonul Start");
+			}
+		}
+		
+		function startGame() {
+			var formControl = document.getElementById('form-control1');
+			var decider = document.getElementById('defaultCheck1');
+    		if(decider.checked) {
+				if (formControl.value < 3) {
+					alert("Introdu o valoare mai mare ca 3");
+				} else {
+					displayButtons();
+				}
+    		} else {
+      			displayButtons();
+    		}
+		}
+		function formContrl() {
+			const formControl = document.getElementById('form-control1');
+			var decider = document.getElementById('defaultCheck1');
+    		if(decider.checked) {
+				formControl.placeholder = "Exepmlu: 99";
+				formControl.readOnly = false;
+    		} else {
+      			formControl.placeholder = "Bifează mai sus…";
+				formControl.readOnly = true;
+    		}
+		}
+	
+	    function displayButtons() {
+			var formControl = document.getElementById('form-control1');
+			var decider = document.getElementById('defaultCheck1');
+			if (decider.checked) {
+				totalButtons = formControl.value;
+				k = Math.floor(Math.random() * totalButtons - 1);
+			}
+			var navButtons = document.getElementById("displayButtons1");
+			for (var b = 0; b < totalButtons; b++) {
+			  var button = document.createElement("button");
+			  button.setAttribute("Button", b);
+			  button.innerHTML="Button " + b;
+			  button.value = b;
+			  navButtons.appendChild(button);
+				if (b === k) {
+					button.addEventListener("click", function(event) {
+					var btn = event.target;
+					var page = btn.getAttribute("pageto");
+					navButtons.appendChild(btn);
+					alert("Ai castigat!!");
+					});
+				} else {
+					button.addEventListener("click", function(event) {
+					var btn = event.target;
+					var page = btn.getAttribute("pageto");
+					navButtons.appendChild(btn);
+					alert("Ne pare rau, de data asta ai gresit!");
+					});
+				}
+			}
+	    }
+	</script>
+</html>
