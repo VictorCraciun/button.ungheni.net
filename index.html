@@ -1,6 +1,5 @@
 <!doctype html>
-<html lang="ro">
-	
+<html lang = "ro">	
 <head>
     <meta charset="utf-8">
     <title> Proiect Button pentru WellCode </title>
@@ -10,8 +9,7 @@
 		p {text-align: center;}
 		div {text-align: center;}
 	</style>
-</head>
-	
+</head>	
 <body>
 	<div class = "container" style = "text-align: right;">
 	  Joc Butoane by Crăciun Victor.
@@ -25,7 +23,7 @@
 				<h1 style = "background-color:Yellow;">Ghicește</h1>
 				<h1 style = "background-color:DodgerBlue;">BUTONUL</h1>
 				<p class = "card-text"></p>
-				<a href = "#" class="btn btn-primary" onclick = "btnonclick();"> Doresc sa JOC </a>
+				<a href = "#" class = "btn btn-primary" onclick = "btnonclick();"> Doresc sa JOC </a>
 			 	</div>
 		  </div>
 		</div>
@@ -44,8 +42,7 @@
 	</div>
 	<div id = "displayButtons1">
 	</div>
-</body>
-	
+</body>	
 <script>
 	var totalButtons = 3, k = Math.floor(Math.random() * totalButtons - 1);
 		function btnonclick() {
@@ -56,7 +53,6 @@
 				alert("Apasă butonul Start");
 			}
 		}
-		
 		function startGame() {
 			var formControl = document.getElementById('form-control1');
 			var decider = document.getElementById('defaultCheck1');
@@ -81,7 +77,6 @@
 				formControl.readOnly = true;
     		}
 		}
-	
 	    function displayButtons() {
 			var formControl = document.getElementById('form-control1');
 			var decider = document.getElementById('defaultCheck1');
@@ -90,7 +85,7 @@
 				k = Math.floor(Math.random() * totalButtons - 1);
 			}
 			var navButtons = document.getElementById("displayButtons1");
-			for (var b = 0; b < totalButtons; b++) {
+			for (var b = 0; b < totalButtons; ++b) {
 			  var button = document.createElement("button");
 			  button.setAttribute("Button", b);
 			  button.innerHTML="Button " + b;
